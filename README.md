@@ -123,7 +123,7 @@ df = draw_class_barplot("./test_dataset/", "test")
 print(f"전체 test 데이터 수: {df['count'].sum(0)}")
 ```
 
-전체 train 데이터 수: 8185
+전체 train 데이터 수: 8185<br/>
 전체 test 데이터 수: 2037
 
 ![](./static/train_plot.png)
