@@ -267,7 +267,7 @@ def test():
 ## 3.5. 학습
 
 ```python
-EPOCH = 100
+EPOCH = 2 
 model.train()  # 모델을 학습하기 위한 상태로 변경
 
 for epoch in range(EPOCH):
@@ -300,4 +300,33 @@ for epoch in range(EPOCH):
     print(f"train accuracy: {accuracy}%")
     
     test()
+```
+
+# 4. 제출
+
+submission 파일을 만들어 kaggle에 올려본다.
+
+## 4.1. 만들어진 모델로 Prediction DataFrame 만들기
+
+```python
+from PIL import Image
+
+dict_lst = []
+
+test_path = "./test/"
+for file_name in os.listdir(test_path):
+    img = Image.open(test_path + file_name)
+    img = transformer(img).unsqueeze(0)
+    pred = F.softmax(model(img)[0], dim=0).tolist()
+    id_lst = [file_name.split('.')[0]]
+    
+    dict_lst.append(id_lst + pred)
+    
+pred_df = pd.DataFrame(dict_lst, columns =['id']+train_dataset.classes)
+```
+
+## 4.2. 제출할 파일 csv로 저장하기
+
+```python
+pred_df.to_csv("./submission.csv", index=False)  # index는 없이 csv파일을 만들기 위해
 ```
