@@ -1,3 +1,10 @@
+# 사전 준비
+
+**다음 주소에서 train, test, labels.csv를 다운받고 프로젝트 폴더를 만들어 저장한다.**<br/>
+<https://www.kaggle.com/competitions/dog-breed-identification/overview>
+
+![](./static/data.PNG)
+
 # 1. 클래스 별 폴더 만들기
 
 모든 클래스가 하나의 폴더에 들어있고, **labels.csv**에 각 파일의 클래스 정보가 있다. 따라서 이를 이용하여 클래스 별 폴더로 나누겠다.
